@@ -2,6 +2,7 @@
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import zlib from "node:zlib";
 const root = path.resolve(process.argv[2] ?? "out");
 const port = Number(process.argv[3] ?? 5190);
 const prefix = process.argv[4] ?? "";
@@ -14,5 +15,9 @@ http.createServer((req, res) => {
   if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, "index.html");
   if (!fs.existsSync(f)) { f = path.join(root, "404.html"); res.statusCode = 404; }
   res.setHeader("content-type", types[path.extname(f)] ?? "application/octet-stream");
+  const ext = path.extname(f);
+  const compressible = [".html", ".css", ".js", ".json", ".svg", ".txt", ".xml", ".webmanifest"].includes(ext);
+  if (compressible && /br/.test(req.headers["accept-encoding"] ?? "")) { res.setHeader("content-encoding", "br"); fs.createReadStream(f).pipe(zlib.createBrotliCompress()).pipe(res); return; }
+  if (compressible && /gzip/.test(req.headers["accept-encoding"] ?? "")) { res.setHeader("content-encoding", "gzip"); fs.createReadStream(f).pipe(zlib.createGzip()).pipe(res); return; }
   fs.createReadStream(f).pipe(res);
 }).listen(port, () => console.log("http://localhost:" + port));

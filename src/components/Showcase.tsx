@@ -57,7 +57,7 @@ function Copy({ s }: { s: (typeof SLIDES)[number] }) {
           <li key={b} className="t-body flex items-center gap-3"><Check size={18} strokeWidth={SW} className="flex-none text-coral-text" aria-hidden="true" />{b}</li>
         ))}
       </ul>
-      <p className="t-label mt-7 text-forest/70">{s.steps}</p>
+      <p className="t-label mt-7 text-forest/85">{s.steps}</p>
       <div className="mt-8 flex flex-wrap items-center gap-5">
         <Button href={livebaseUrl(s.cat)} event={`agendar-vitrine-${s.n}`}>{s.cta}</Button>
         <TLink href={s.href} className="link-jr">Saiba mais <span className="arr">→</span></TLink>
@@ -109,7 +109,7 @@ export function Showcase() {
       <div className="grid gap-16">
         {SLIDES.map((s, i) => (
           <article key={s.n} className="grid-12 items-center gap-y-8">
-            <div className="col-span-12 lg:col-span-5"><p className="t-num t-display accent-text">{s.n}<span className="text-forest/30"> / 02</span></p><Copy s={s} /></div>
+            <div className="col-span-12 lg:col-span-5"><p className="t-num t-display accent-text">{s.n}<span className="text-forest/60"> / 02</span></p><Copy s={s} /></div>
             <div className="col-span-12 aspect-[8/7] overflow-hidden rounded-[28px] lg:col-span-6 lg:col-start-7"><Visual i={i as 0 | 1} /></div>
           </article>
         ))}
@@ -124,7 +124,7 @@ export function Showcase() {
           <div className="t-display absolute left-0 top-0 h-[1em] overflow-hidden leading-none accent-text t-num" style={{ fontSize: "clamp(56px, 6.2vw, 92px)" }} aria-hidden="true">
             <div data-odo><div className="h-[1em]">01</div><div className="h-[1em]">02</div></div>
           </div>
-          <span className="t-display absolute left-[1.5em] top-0 leading-none text-forest/30 t-num" style={{ fontSize: "clamp(56px, 6.2vw, 92px)" }} aria-hidden="true">/ 02</span>
+          <span className="t-display absolute left-[1.5em] top-0 leading-none text-forest/60 t-num" style={{ fontSize: "clamp(56px, 6.2vw, 92px)" }} aria-hidden="true">/ 02</span>
           <div data-t="0" className="absolute inset-x-0" style={{ top: "clamp(88px, 8.4vw, 124px)" }}><Copy s={SLIDES[0]} /></div>
           <div data-t="1" className="absolute inset-x-0" style={{ top: "clamp(88px, 8.4vw, 124px)" }}><Copy s={SLIDES[1]} /></div>
         </div>

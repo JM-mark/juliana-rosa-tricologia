@@ -37,7 +37,7 @@ const MAP = { 7482357: "cabelo-macro", 7830509: "cabelo-dourado", 9096593: "esco
 for (const [id, name] of Object.entries(MAP)) {
   const src = `_qa/prancha/${id}.jpg`;
   if (!fs.existsSync(src)) continue;
-  await sharp(src).resize({ width: 1800, withoutEnlargement: true }).webp({ quality: 78 }).toFile(`public/atmos/${name}.webp`);
+  await sharp(src).resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 72 }).toFile(`public/atmos/${name}.webp`);
   await sharp(src).resize({ width: 640, withoutEnlargement: true }).webp({ quality: 74 }).toFile(`public/atmos/${name}-sm.webp`);
 }
 console.log(fs.readdirSync("public/atmos").length, "arquivos em public/atmos");

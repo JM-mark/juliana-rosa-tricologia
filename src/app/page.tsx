@@ -47,19 +47,19 @@ export default function Home() {
                 <span className="line" style={LINE(1)}><span>e sobrancelha</span></span>
                 <span className="line" style={LINE(2)}><span><em className="shine">fio a fio</em> realista.</span></span>
               </h1>
-              <p className="t-lead rv mt-9" data-d={400}>
+              <p className="t-lead fx fx-1 mt-9">
                 <span className="font-medium">Método Fio Real:</span> primeiro a verdade do seu caso, depois a indicação do que realmente faz sentido para você.
               </p>
-              <div className="rv mt-10 flex flex-wrap gap-3" data-d={500}>
+              <div className="fx fx-2 mt-10 flex flex-wrap gap-3">
                 <Button href={livebaseUrl(LIVEBASE_CATEGORY.tricologia)} event="agendar-hero-tricologia">Avaliação de queda de cabelo</Button>
                 <Button href={livebaseUrl(LIVEBASE_CATEGORY.micropigmentacao)} variant="secondary" event="agendar-hero-micro">Avaliação de micropigmentação</Button>
               </div>
-              <p className="rv mt-6" data-d={600}>
+              <p className="fx fx-3 mt-6">
                 <a className="link-jr" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" data-event="whatsapp-hero">Prefere o WhatsApp? Chame a Juliana <span aria-hidden="true">→</span></a>
               </p>
             </div>
             <div className="relative col-span-12 mx-auto w-full max-w-[360px] lg:col-span-4 lg:mx-0 lg:justify-self-end">
-              <Photo name="juliana-retrato" alt="Juliana Rosa, tricologista e especialista em sobrancelhas, entre folhagens" reveal priority ratio="3 / 4" focus="55% 30%" sizes="360px" />
+              <Photo name="juliana-retrato" alt="Juliana Rosa, tricologista e especialista em sobrancelhas, entre folhagens" priority ratio="3 / 4" focus="55% 30%" sizes="360px" />
               <p className="sig mt-5 text-center text-[54px]" aria-label="Juliana Rosa">Juliana Rosa</p>
             </div>
           </div>
@@ -72,6 +72,7 @@ export default function Home() {
       {/* 3 · Os 2 destaques: vitrine fixa */}
       <section className="bg-mist-s py-[calc(var(--section-y)*0.7)]" id="destaques" aria-label="Os dois destaques: tricologia e micropigmentação">
         <Container>
+          <h2 className="sr-only">Os dois destaques: tricologia e micropigmentação fio a fio</h2>
           <Showcase />
         </Container>
       </section>
@@ -112,7 +113,7 @@ export default function Home() {
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <Button href="/resultados/" variant="secondary" event="ver-resultados">Ver mais resultados</Button>
-            <p className="t-cap text-forest/70">Arraste a divisória para comparar.</p>
+            <p className="t-cap text-forest/85">Arraste a divisória para comparar.</p>
           </div>
         </Container>
       </section>

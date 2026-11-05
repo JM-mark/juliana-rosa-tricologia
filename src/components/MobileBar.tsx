@@ -44,7 +44,7 @@ export function MobileBar() {
         style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom))" }}
       >
         <div className="flex gap-2 rounded-full bg-forest p-2 shadow-[0_18px_40px_-14px_rgba(31,58,43,0.7)]">
-          <button type="button" className="flex h-12 flex-1 items-center justify-center rounded-full bg-cream text-[14px] font-medium tracking-[0.04em] text-forest" onClick={() => setSheet(true)} data-event="agendar-barra">
+          <button type="button" className="flex h-12 flex-1 items-center justify-center rounded-full bg-cream text-[12px] font-medium uppercase tracking-[0.16em] text-forest" onClick={() => setSheet(true)} data-event="agendar-barra">
             Agendar avaliação
           </button>
           <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" className="grid h-12 w-12 place-items-center rounded-full border border-cream/40 text-cream" data-event="whatsapp-barra">

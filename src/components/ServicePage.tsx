@@ -66,17 +66,17 @@ export function ServicePage({ s }: { s: Service }) {
               </nav>
               <Eyebrow>{s.eyebrow}</Eyebrow>
               <h1 className="t-h1 mt-5 !text-[clamp(40px,5.2vw,82px)]">{italicLast(s.title)}</h1>
-              <p className="t-lead rv mt-7 max-w-xl">{s.lead}</p>
-              <div className="rv mt-9" data-d={120}><BookCta s={s} id="topo" /></div>
-              <ul className="rv mt-10 flex flex-wrap gap-x-7 gap-y-3" data-d={200}>
+              <p className="t-lead fx fx-1 mt-7 max-w-xl">{s.lead}</p>
+              <div className="fx fx-2 mt-9"><BookCta s={s} id="topo" /></div>
+              <ul className="fx fx-3 mt-10 flex flex-wrap gap-x-7 gap-y-3">
                 {s.benefits.map((b) => (
                   <li key={b} className="t-cap flex items-center gap-2 text-forest/85"><Check size={16} strokeWidth={SW} className="text-coral-text" aria-hidden="true" />{b}</li>
                 ))}
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-5">
-              <div className="photo-wrap rv aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]" data-d={100}>
-                <Atmos name={HERO_IMG[s.slug] ?? "folhas"} className="h-full w-full object-cover" />
+              <div className="photo-wrap fx fx-2 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
+                <Atmos name={HERO_IMG[s.slug] ?? "folhas"} eager className="h-full w-full object-cover" />
               </div>
             </div>
           </div>

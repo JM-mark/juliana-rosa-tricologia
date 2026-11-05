@@ -107,10 +107,10 @@ export function FollicleGrow() {
         <span aria-hidden="true" className="absolute bottom-2 left-[15px] top-2 w-px bg-cream/25" />
         <span data-bar aria-hidden="true" className="absolute bottom-2 left-[15px] top-2 w-px origin-top scale-y-0 bg-coral" />
         {STEPS.map((s) => (
-          <li key={s.n} data-step className="group relative pl-12 opacity-60 transition-opacity duration-500 data-[on=1]:opacity-100">
+          <li key={s.n} data-step className="group relative pl-12 opacity-80 transition-opacity duration-500 data-[on=1]:opacity-100">
             <span className="t-num t-label absolute left-0 top-1 grid h-8 w-8 place-items-center rounded-full border border-cream/40 bg-forest text-[11px] transition-colors duration-500 group-data-[on=1]:border-coral group-data-[on=1]:text-coral">{s.n}</span>
             <h3 className="t-h4">{s.t}</h3>
-            <p className="t-body mt-1 text-cream/80">{s.d}</p>
+            <p className="t-body mt-1 text-cream/90">{s.d}</p>
           </li>
         ))}
       </ol>
