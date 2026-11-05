@@ -65,7 +65,7 @@ export function ServicePage({ s }: { s: Service }) {
                 ))}
               </nav>
               <Eyebrow>{s.eyebrow}</Eyebrow>
-              <h1 className="t-h1 mt-5">{italicLast(s.title)}</h1>
+              <h1 className="t-h1 mt-5 !text-[clamp(40px,5.2vw,82px)]">{italicLast(s.title)}</h1>
               <p className="t-lead rv mt-7 max-w-xl">{s.lead}</p>
               <div className="rv mt-9" data-d={120}><BookCta s={s} id="topo" /></div>
               <ul className="rv mt-10 flex flex-wrap gap-x-7 gap-y-3" data-d={200}>
