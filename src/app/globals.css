@@ -187,13 +187,6 @@ select.input { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http:/
 html[data-intro="1"] .line > span { animation-delay: calc(var(--i, 0) * 110ms + 950ms); }
 html[data-intro="1"] .fx-1 { animation-delay: 1350ms; } html[data-intro="1"] .fx-2 { animation-delay: 1500ms; } html[data-intro="1"] .fx-3 { animation-delay: 1650ms; }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
-  .js .rv { opacity: 1; transform: none; }
-  .reveal-photo { clip-path: inset(0 round var(--radius-photo)); }
-  .intro, .curtain { display: none !important; }
-}
-
 /* FAQ */
 .faq details { border-bottom: 1px solid color-mix(in srgb, var(--color-forest) 18%, transparent); }
 .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 24px; align-items: center; padding: 22px 0; }
@@ -245,11 +238,6 @@ html[data-intro="1"] .fx-1 { animation-delay: 1350ms; } html[data-intro="1"] .fx
 .svc-float { position: fixed; left: 0; top: 0; width: 260px; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; pointer-events: none; z-index: 60; opacity: 0; will-change: transform; box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--color-forest) 60%, transparent); }
 .svc-float img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee { animation: none; }
-  .shine { background: none; -webkit-text-fill-color: currentColor; animation: none !important; }
-}
-
 /* ===== Hover só com mouse ===== */
 @media (hover: hover) and (pointer: fine) {
   .btn:hover::before { transform: translateX(0); }
@@ -288,7 +276,7 @@ video { pointer-events: none; }
 .bg-video-wrap[data-fallback="1"] video { display: none; }
 .bg-video-wrap[data-fallback="1"] .bg-video { animation: kenburns 12s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.06); } }
-@media (prefers-reduced-motion: reduce) { .bg-video-wrap[data-fallback="1"] .bg-video { animation: none; } }
+
 .bg-video-wrap { position: absolute; inset: 0; overflow: hidden; }
 /* Menu do celular em portal: cobre a tela toda, opaco, com rolagem própria */
 .menu-panel { position: fixed; inset: 0; height: 100dvh; z-index: 90; background: var(--color-cream); overflow-y: auto; overscroll-behavior: contain; padding: max(16px, env(safe-area-inset-top)) var(--gutter) max(32px, env(safe-area-inset-bottom)); }

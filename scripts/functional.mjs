@@ -135,17 +135,15 @@ async function mobile() {
 }
 
 async function reduced() {
+  // Movimento forçado: mesmo com "Reduzir Movimento" ligado, intro, vídeo e animações rodam.
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: "reduce" });
   const page = await ctx.newPage();
-  await page.goto(BASE + "/", { waitUntil: "networkidle" });
-  await page.waitForTimeout(1200);
-  const st = await page.evaluate(() => ({
-    intro: getComputedStyle(document.querySelector(".intro")).display,
-    vid: getComputedStyle(document.querySelector("video")).display,
-    line: getComputedStyle(document.querySelector("h1 .line > span")).transform,
-    rv: getComputedStyle(document.querySelector(".rv")).opacity,
-  }));
-  ok("reduced-motion · sem intro, sem vídeo (poster), título e blocos visíveis", st.intro === "none" && st.vid === "none" && (st.line === "none" || st.line === "matrix(1, 0, 0, 1, 0, 0)") && st.rv === "1", JSON.stringify(st));
+  await page.goto(BASE + "/", { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(350);
+  const intro = await page.evaluate(() => getComputedStyle(document.querySelector(".intro")).display);
+  await page.waitForTimeout(4200);
+  const st = await page.evaluate(() => { const v = document.querySelector("video"); return { vid: getComputedStyle(v).display, playing: !v.paused && v.currentTime > 0, lines: getComputedStyle(document.querySelector("h1 .line > span")).animationName, rvAnim: getComputedStyle(document.querySelector(".fx")).animationName, marquee: getComputedStyle(document.querySelector(".marquee")).animationName }; });
+  ok("movimento forçado (Reduzir Movimento ligado) · intro, vídeo tocando e animações ativas", intro === "grid" && st.vid !== "none" && st.playing && st.lines !== "none" && st.rvAnim !== "none" && st.marquee !== "none", JSON.stringify({ intro, ...st }));
   await ctx.close();
 }
 

@@ -1,7 +1,7 @@
 import { asset } from "@/lib/asset";
 import { AutoVideo } from "@/components/AutoVideo";
 
-/** Vídeo de fundo (loop, mudo). Com prefers-reduced-motion o vídeo some e fica o poster. */
+/** Vídeo de fundo (loop, mudo). Se o iOS bloquear o autoplay, entra o plano B animado (ver AutoVideo). */
 export function BgVideo({ name, poster, mobile }: { name: "hero" | "folhagem"; poster: string; mobile?: string }) {
   return <AutoVideo name={name} poster={poster} mobile={mobile} lazy={name !== "hero"} />;
 }

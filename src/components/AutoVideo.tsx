@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { asset } from "@/lib/asset";
+import { BrowSketch } from "@/components/BrowSketch";
 
 type Props = { name: "hero" | "folhagem"; poster: string; mobile?: string; lazy?: boolean };
 
@@ -17,7 +18,6 @@ export function AutoVideo({ name, poster, mobile, lazy = false }: Props) {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     v.muted = true;
     v.defaultMuted = true;
     v.setAttribute("muted", "");
@@ -66,9 +66,15 @@ export function AutoVideo({ name, poster, mobile, lazy = false }: Props) {
     <div className="bg-video-wrap" data-fallback={fallback ? "1" : undefined} aria-hidden="true">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={asset(`/video/${poster}`)} alt="" className="bg-video" {...(lazy ? { loading: "lazy" as const } : { fetchPriority: "high" as const })} decoding="async" />
+      {/* Plano B (iOS bloqueou o vídeo): a sobrancelha se desenha sobre o poster, então nunca fica parado */}
+      {fallback && !lazy && (
+        <div className="pointer-events-none absolute inset-y-0 right-[-8%] flex w-[120%] items-center justify-center opacity-70 sm:right-0 sm:w-[70%]">
+          <BrowSketch className="w-full" label={false} />
+        </div>
+      )}
       <video
         ref={ref}
-        className="bg-video motion-reduce:hidden"
+        className="bg-video"
         autoPlay={!lazy}
         muted
         loop
