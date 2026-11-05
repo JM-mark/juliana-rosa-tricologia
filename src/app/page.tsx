@@ -35,7 +35,7 @@ export default function Home() {
     <>
       {/* 1 · Hero em tela cheia, com vídeo (fios desenhados) */}
       <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-14 pt-[120px] sm:pb-20">
-        <BgVideo name="hero" poster="hero-poster.webp" mobile="hero-m.mp4" />
+        <BgVideo name="hero" poster="hero-poster.webp" />
         <div className="veil-cream absolute inset-0" aria-hidden="true" />
         <div className="veil-cream-b absolute inset-0" aria-hidden="true" />
         <Container className="relative">

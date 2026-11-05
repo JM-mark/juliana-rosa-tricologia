@@ -30,12 +30,8 @@ async function mobile() {
   ok("mobile · título em 3 linhas com máscara", h1lines === 3);
   const heroTitleVisible = await page.evaluate(() => { const r = document.querySelector("h1").getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight; });
   ok("mobile · título do hero dentro da primeira tela", heroTitleVisible);
-  const vid = await page.evaluate(async () => {
-    const v = document.querySelector("video");
-    await new Promise((r) => setTimeout(r, 1500));
-    return v ? { src: v.currentSrc.split("/").pop(), paused: v.paused, t: v.currentTime } : null;
-  });
-  ok("mobile · vídeo do hero usa a versão leve e toca", !!vid && /hero-m\.mp4/.test(vid.src) && !vid.paused, JSON.stringify(vid));
+  const vid = await page.evaluate(() => ({ video: !!document.querySelector(".bg-video-wrap").querySelector("video"), poster: document.querySelector(".bg-video-wrap img")?.getBoundingClientRect().width > 300, anim: getComputedStyle(document.querySelector(".bg-video-wrap img")).animationName }));
+  ok("mobile · hero sem vídeo nem animação de fundo (só poster estático)", !vid.video && vid.poster && vid.anim === "none", JSON.stringify(vid));
 
   // Botões do hero → Livebase por categoria
   const heroLinks = await page.evaluate(() => [...document.querySelectorAll("section a.btn")].slice(0, 2).map((a) => a.href));
@@ -136,14 +132,14 @@ async function mobile() {
 
 async function reduced() {
   // Movimento forçado: mesmo com "Reduzir Movimento" ligado, intro, vídeo e animações rodam.
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: "reduce" });
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: "reduce" });
   const page = await ctx.newPage();
   await page.goto(BASE + "/", { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(350);
   const intro = await page.evaluate(() => getComputedStyle(document.querySelector(".intro")).display);
   await page.waitForTimeout(4200);
   const st = await page.evaluate(() => { const v = document.querySelector("video"); return { vid: getComputedStyle(v).display, playing: !v.paused && v.currentTime > 0, lines: getComputedStyle(document.querySelector("h1 .line > span")).animationName, rvAnim: getComputedStyle(document.querySelector(".fx")).animationName, marquee: getComputedStyle(document.querySelector(".marquee")).animationName }; });
-  ok("movimento forçado (Reduzir Movimento ligado) · intro, vídeo tocando e animações ativas", intro === "grid" && st.vid !== "none" && st.playing && st.lines !== "none" && st.rvAnim !== "none" && st.marquee !== "none", JSON.stringify({ intro, ...st }));
+  ok("movimento forçado no desktop (Reduzir Movimento ligado) · intro, vídeo tocando e animações ativas", intro === "grid" && st.vid !== "none" && st.playing && st.lines !== "none" && st.rvAnim !== "none" && st.marquee !== "none", JSON.stringify({ intro, ...st }));
   await ctx.close();
 }
 

@@ -3,7 +3,7 @@ import { AutoVideo } from "@/components/AutoVideo";
 
 /** Vídeo de fundo (loop, mudo). Se o iOS bloquear o autoplay, entra o plano B animado (ver AutoVideo). */
 export function BgVideo({ name, poster, mobile }: { name: "hero" | "folhagem"; poster: string; mobile?: string }) {
-  return <AutoVideo name={name} poster={poster} mobile={mobile} lazy={name !== "hero"} />;
+  return <AutoVideo name={name} poster={poster} mobile={mobile} lazy={name !== "hero"} desktopOnly={name === "hero"} />;
 }
 
 export type AtmosName = "cabelo-macro" | "cabelo-dourado" | "escova" | "folha" | "samambaia" | "folhas" | "clinica-clara" | "equipamento" | "sala" | "salao-claro";
