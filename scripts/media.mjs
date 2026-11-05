@@ -33,7 +33,7 @@ await sharp("_qa/hero/poster-folhagem.png").webp({ quality: 76 }).toFile("public
 for (const f of fs.readdirSync("public/video")) console.log(f, mb("public/video/" + f));
 
 // ---- Fotos de atmosfera tratadas (de _qa/prancha) ----
-const MAP = { 7482357: "cabelo-macro", 7830509: "cabelo-dourado", 9096593: "escova", 28410614: "folha", "1302883-duotone": "samambaia", "14255210-duotone": "folhas", 3736279: "clinica-clara", 3736521: "equipamento", 11024139: "sala" };
+const MAP = { 7482357: "cabelo-macro", 7830509: "cabelo-dourado", 9096593: "escova", 28410614: "folha", "1302883-duotone": "samambaia", "14255210-duotone": "folhas", 3736279: "clinica-clara", 3736521: "equipamento", 11024139: "sala", 7750114: "salao-claro" };
 for (const [id, name] of Object.entries(MAP)) {
   const src = `_qa/prancha/${id}.jpg`;
   if (!fs.existsSync(src)) continue;

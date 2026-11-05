@@ -13,11 +13,15 @@ import { TLink } from "@/components/Nav";
 
 const HERO_IMG: Record<string, AtmosName> = {
   tricologia: "cabelo-macro",
-  "micropigmentacao-fio-a-fio": "folhas",
-  "reconstrucao-de-fios": "cabelo-dourado",
+  "micropigmentacao-fio-a-fio": "samambaia",
   "despigmentacao-a-laser": "equipamento",
-  "design-de-sobrancelha": "escova",
   "laser-e-estetica": "clinica-clara",
+};
+
+// Heros com foto real da Juliana (resultado de micropigmentação fio a fio), com legenda de transparência.
+const HERO_PHOTO: Record<string, "fio-a-fio-resultado" | "resultado-avulso"> = {
+  "reconstrucao-de-fios": "fio-a-fio-resultado",
+  "design-de-sobrancelha": "resultado-avulso",
 };
 
 export function BookCta({ s, id }: { s: Service; id: string }) {
@@ -75,9 +79,16 @@ export function ServicePage({ s }: { s: Service }) {
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-5">
-              <div className="photo-wrap fx fx-2 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
-                <Atmos name={HERO_IMG[s.slug] ?? "folhas"} eager className="h-full w-full object-cover" />
-              </div>
+              {HERO_PHOTO[s.slug] ? (
+                <figure className="fx fx-2">
+                  <Photo name={HERO_PHOTO[s.slug]} alt="Resultado real de micropigmentação fio a fio, olhar frontal, com a marca Juliana Rosa" priority ratio="1 / 1" focus="50% 38%" sizes="(min-width:1024px) 40vw, 90vw" />
+                  <figcaption className="t-cap mt-3 text-forest/80">Resultado real de micropigmentação fio a fio. Os resultados variam de pessoa para pessoa.</figcaption>
+                </figure>
+              ) : (
+                <div className="photo-wrap fx fx-2 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
+                  <Atmos name={HERO_IMG[s.slug] ?? "folhas"} eager className="h-full w-full object-cover" />
+                </div>
+              )}
             </div>
           </div>
         </Container>

@@ -24,7 +24,7 @@ export const metadata = pageMeta({
 const LINE = (i: number) => ({ ["--i" as string]: i }) as React.CSSProperties;
 
 const SVC_IMG: Record<string, AtmosName> = {
-  "reconstrucao-de-fios": "cabelo-dourado",
+  "reconstrucao-de-fios": "samambaia",
   "despigmentacao-a-laser": "equipamento",
   "design-de-sobrancelha": "escova",
   "laser-e-estetica": "clinica-clara",

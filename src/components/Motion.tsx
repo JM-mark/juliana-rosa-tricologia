@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { asset } from "@/lib/asset";
-import { canHover, prefersReducedMotion } from "@/lib/motion";
+import { prefersReducedMotion } from "@/lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,36 +70,6 @@ export function Motion() {
     return () => window.clearTimeout(t);
   }, []);
 
-  // Cursor: ponto coral + anel com lerp, em um único elemento por peça (translate3d, sem setState).
-  useEffect(() => {
-    if (!canHover() || prefersReducedMotion() || window.innerWidth < 1024) return;
-    const dot = document.querySelector<HTMLElement>(".cursor-dot");
-    const ring = document.querySelector<HTMLElement>(".cursor-ring");
-    if (!dot || !ring) return;
-    document.body.classList.add("cursor-on");
-    let x = -100, y = -100, rx = -100, ry = -100, raf = 0, shown = false;
-    const move = (e: PointerEvent) => {
-      x = e.clientX; y = e.clientY;
-      if (!shown) { shown = true; rx = x; ry = y; }
-      const lens = (e.target as HTMLElement | null)?.closest?.("[data-cursor='lens']");
-      ring.classList.toggle("lens", !!lens);
-      const sys = (e.target as HTMLElement | null)?.closest?.("input, textarea, select");
-      document.body.classList.toggle("cursor-system", !!sys);
-    };
-    const loop = () => {
-      rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
-      dot.style.transform = `translate3d(${x}px,${y}px,0)`;
-      ring.style.transform = `translate3d(${rx}px,${ry}px,0)`;
-      raf = requestAnimationFrame(loop);
-    };
-    window.addEventListener("pointermove", move, { passive: true });
-    raf = requestAnimationFrame(loop);
-    return () => {
-      window.removeEventListener("pointermove", move);
-      cancelAnimationFrame(raf);
-      document.body.classList.remove("cursor-on", "cursor-system");
-    };
-  }, []);
 
   return (
     <>
@@ -110,8 +80,6 @@ export function Motion() {
           <span className="sig">Juliana Rosa</span>
         </div>
       </div>
-      <div className="cursor-dot" aria-hidden="true" />
-      <div className="cursor-ring" aria-hidden="true"><span>análise</span></div>
     </>
   );
 }

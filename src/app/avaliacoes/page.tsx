@@ -14,7 +14,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-      <PageHero image="folhas" eyebrow="Avaliações" title={<>Quem já passou por aqui <em>conta</em>.</>} lead="Avaliações reais, direto da ficha do Google." crumbs={[{ name: "Início", path: "/" }, { name: "Avaliações", path: "/avaliacoes/" }]} />
+      <PageHero image="salao-claro" eyebrow="Avaliações" title={<>Quem já passou por aqui <em>conta</em>.</>} lead="Avaliações reais, direto da ficha do Google." crumbs={[{ name: "Início", path: "/" }, { name: "Avaliações", path: "/avaliacoes/" }]} />
       <Section tone="cream" className="!pt-0">
         <div className="grid-12 gap-y-10">
           <div className="col-span-12 lg:col-span-6"><Reviews /></div>

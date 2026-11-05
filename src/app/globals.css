@@ -176,19 +176,6 @@ select.input { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http:/
 .js .rv { opacity: 0; transform: translateY(22px); }
 .js .rv.is-in { opacity: 1; transform: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-slow) var(--ease-out); }
 
-/* Cursor */
-.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; will-change: transform; display: none; }
-.cursor-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--color-coral); }
-.cursor-ring { width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; border: 1px solid var(--color-coral); place-items: center; transition: width var(--dur-base) var(--ease-out), height var(--dur-base) var(--ease-out), margin var(--dur-base) var(--ease-out), background var(--dur-base); }
-.cursor-ring span { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0; color: var(--color-forest); transition: opacity var(--dur-fast); }
-.cursor-ring.lens { opacity: 0; }
-@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
-  .cursor-on .cursor-dot, .cursor-on .cursor-ring { display: grid; }
-  .cursor-on:not(.cursor-system) { cursor: none; }
-  .cursor-on a, .cursor-on button, .cursor-on input, .cursor-on select, .cursor-on textarea, .cursor-on label, .cursor-on summary, .cursor-on [role="slider"] { cursor: pointer; }
-  .cursor-on input, .cursor-on textarea, .cursor-on select { cursor: text; }
-}
-
 /* Página: transição e intro */
 .curtain { position: fixed; inset: 0; z-index: 9997; background: var(--color-cream); display: grid; place-items: center; clip-path: inset(100% 0 0 0); pointer-events: none; }
 .curtain img { width: 96px; height: auto; opacity: 0; }

@@ -28,7 +28,7 @@ export default function Page() {
     <>
       <JsonLd data={faqLd(FAQS)} />
       <PageHero
-        image="cabelo-macro"
+        image="folha"
         eyebrow="Método Fio Real"
         title={<>Primeiro, <em>a verdade</em> do seu caso.</>}
         lead="Antes de qualquer procedimento, olhamos de perto, ouvimos você e só então indicamos. É assim que cuidamos de queda de cabelo e de sobrancelha."

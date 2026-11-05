@@ -38,7 +38,7 @@ const SLIDES = [
 function Visual({ i }: { i: 0 | 1 }) {
   return i === 0 ? (
     <div className="photo-wrap h-full w-full">
-      <Atmos name="cabelo-macro" className="h-full w-full object-cover" />
+      <Atmos name="cabelo-dourado" className="h-full w-full object-cover" />
     </div>
   ) : (
     <div className="relative h-full w-full">
