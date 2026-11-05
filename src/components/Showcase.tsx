@@ -110,7 +110,7 @@ export function Showcase() {
         {SLIDES.map((s, i) => (
           <article key={s.n} className="grid-12 items-center gap-y-8">
             <div className="col-span-12 lg:col-span-5"><p className="t-num t-display accent-text">{s.n}<span className="text-forest/30"> / 02</span></p><Copy s={s} /></div>
-            <div className="col-span-12 aspect-[4/5] overflow-hidden rounded-[28px] sm:aspect-[5/4] lg:col-span-6 lg:col-start-7"><Visual i={i as 0 | 1} /></div>
+            <div className="col-span-12 aspect-[8/7] overflow-hidden rounded-[28px] lg:col-span-6 lg:col-start-7"><Visual i={i as 0 | 1} /></div>
           </article>
         ))}
       </div>
@@ -128,9 +128,11 @@ export function Showcase() {
           <div data-t="0" className="absolute inset-x-0" style={{ top: "clamp(88px, 8.4vw, 124px)" }}><Copy s={SLIDES[0]} /></div>
           <div data-t="1" className="absolute inset-x-0" style={{ top: "clamp(88px, 8.4vw, 124px)" }}><Copy s={SLIDES[1]} /></div>
         </div>
-        <div className="relative col-span-6 col-start-7 h-[78%]">
-          <div data-i="0" className="absolute inset-0 overflow-hidden rounded-[28px]"><Visual i={0} /></div>
-          <div data-i="1" className="absolute inset-0 overflow-hidden"><Visual i={1} /></div>
+        <div className="col-span-6 col-start-7 grid h-full place-items-center">
+          <div className="relative" style={{ aspectRatio: "8 / 7", width: "min(100%, calc(80svh * 1.1428))" }}>
+            <div data-i="0" className="absolute inset-0 overflow-hidden rounded-[28px]"><Visual i={0} /></div>
+            <div data-i="1" className="absolute inset-0 overflow-hidden"><Visual i={1} /></div>
+          </div>
         </div>
       </div>
       <div className="absolute bottom-6 left-0 right-0 mx-auto h-px max-w-[1184px] bg-forest/15" aria-hidden="true"><span data-prog className="block h-px origin-left scale-x-0 bg-coral" /></div>

@@ -5,7 +5,6 @@ import { Button, Container, Eyebrow, Photo } from "@/components/ui";
 import { Section } from "@/components/sections";
 import { FollicleGrow } from "@/components/FollicleGrow";
 import { BeforeAfter } from "@/components/BeforeAfter";
-import { LensPhoto } from "@/components/LensPhoto";
 import { Reviews } from "@/components/Reviews";
 import { MapCard } from "@/components/MapCard";
 import { Marquee } from "@/components/Marquee";
@@ -86,11 +85,7 @@ export default function Home() {
           </div>
           <p className="t-lead col-span-12 lg:col-span-4">Antes de indicar qualquer procedimento, olhamos de perto. Às vezes o melhor caminho é outro, e a gente conta.</p>
         </div>
-        <div className="mt-12">
-          <LensPhoto name="micro-no-dia" alt="Olhar com sobrancelhas recém micropigmentadas, em detalhe, para análise com lente" />
-          <p className="t-cap mt-3 text-forest/75">Resultado real, no dia do procedimento. Passe o mouse para analisar. Os resultados variam de pessoa para pessoa.</p>
-        </div>
-        <ol className="mt-16 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
             ["Avaliação", "Entender o seu caso: fios, pele, histórico e o que você deseja."],
             ["Plano", "Indicar o que faz sentido, na ordem certa e sem pressa."],

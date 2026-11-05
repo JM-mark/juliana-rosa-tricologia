@@ -158,9 +158,9 @@ export function ServicePage({ s }: { s: Service }) {
       ))}
 
       {s.note && (
-        <section className="bg-mist-s pb-[var(--section-y)]">
+        <section className="bg-mist-s py-[calc(var(--section-y)*0.5)]">
           <Container>
-            <p className="t-lead card mx-auto max-w-3xl p-7 text-center">{s.note}</p>
+            <p className="t-lead mx-auto max-w-3xl text-center">{s.note}</p>
           </Container>
         </section>
       )}
