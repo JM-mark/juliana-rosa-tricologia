@@ -61,11 +61,11 @@ async function mobile() {
   await page.waitForTimeout(500);
   await page.getByRole("button", { name: /abrir menu/i }).tap();
   await page.waitForTimeout(1200);
-  const menuLinks = await page.evaluate(() => [...document.querySelectorAll("header [data-stagger] a")].map((a) => a.textContent.trim()));
+  const menuLinks = await page.evaluate(() => [...document.querySelectorAll("[role=dialog][aria-label=Menu] a")].map((a) => a.textContent.trim()));
   ok("mobile · menu abre com os links (stagger)", menuLinks.length >= 9, menuLinks.slice(0, 3).join(", ") + "…");
-  const menuOp = await page.evaluate(() => getComputedStyle(document.querySelector("header [data-stagger]")).opacity);
+  const menuOp = await page.evaluate(() => getComputedStyle(document.querySelector("[role=dialog][aria-label=Menu] [data-stagger]")).opacity);
   ok("mobile · links do menu ficam visíveis após o stagger", Number(menuOp) > 0.95, "opacidade " + menuOp);
-  await page.getByRole("button", { name: /fechar menu/i }).tap();
+  await page.getByRole("button", { name: /fechar menu/i }).last().tap();
   await page.waitForTimeout(600);
 
   // Vitrine empilhada (sem pin) e imagens inteiras
@@ -100,7 +100,7 @@ async function mobile() {
   await page.evaluate(() => (window.__lenis ? window.__lenis.scrollTo(0, { immediate: true }) : scrollTo(0, 0)));
   await page.getByRole("button", { name: /abrir menu/i }).tap();
   await page.waitForTimeout(900);
-  await page.locator('header [data-stagger] a[href$="/contato/"]').tap();
+  await page.locator('[role="dialog"][aria-label="Menu"] a[href$="/contato/"]').tap();
   await page.waitForURL(/contato/, { timeout: 5000 });
   await page.waitForTimeout(900);
   ok("mobile · navegação entre páginas (cortina) leva ao Contato", /\/contato\/$/.test(page.url()));

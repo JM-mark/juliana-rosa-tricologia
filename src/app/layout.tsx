@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#f4ece3", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#f4ece3", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 // Marca "js" cedo (estados iniciais de animação só com JS) e decide a intro (1ª visita da sessão).
 const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{if(!sessionStorage.getItem('jr-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.dataset.intro='1';sessionStorage.setItem('jr-intro','1')}}catch(e){}})();`;

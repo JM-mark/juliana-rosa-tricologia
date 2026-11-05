@@ -68,7 +68,7 @@ export function BeforeAfter({
     <figure>
       <div
         ref={box}
-        className="photo-wrap relative touch-none select-none"
+        className="photo-wrap relative touch-pan-y select-none"
         style={{ aspectRatio: `${d.w} / ${d.h}`, backgroundImage: `url(${photoData[after].lqip})`, backgroundSize: "cover" }}
         onPointerDown={(e) => { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); fromEvent(e); }}
         onPointerMove={(e) => { if (e.buttons || e.pointerType === "touch") fromEvent(e); }}

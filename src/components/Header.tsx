@@ -2,12 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import gsap from "gsap";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { asset } from "@/lib/asset";
-import { prefersReducedMotion } from "@/lib/motion";
 import { TLink } from "@/components/Nav";
 import { Button, SW } from "@/components/ui";
+import { MobileMenu } from "@/components/MobileMenu";
 
 const OTHER = [
   { href: "/sobrancelhas/reconstrucao-de-fios/", label: "Reconstrução de fios" },
@@ -22,7 +21,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [sub, setSub] = useState(false);
-  const menu = useRef<HTMLDivElement>(null);
+  const menuBtn = useRef<HTMLButtonElement>(null);
   const subRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,22 +38,6 @@ export function Header() {
     setSub(false);
   }
 
-  useEffect(() => {
-    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
-    if (open) {
-      lenis?.stop();
-      document.body.style.overflow = "hidden";
-      if (!prefersReducedMotion() && menu.current) {
-        gsap.fromTo(menu.current.querySelectorAll("[data-stagger]"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "expo.out", stagger: 0.06, delay: 0.1 });
-      }
-    } else {
-      lenis?.start();
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
 
   useEffect(() => {
     if (!sub) return;
@@ -78,12 +61,13 @@ export function Header() {
 
   return (
     <header
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
       className={`fixed inset-x-0 top-0 z-50 transition-[background,box-shadow] duration-500 ${
         scrolled || open ? "bg-cream/90 shadow-[0_1px_0_rgba(31,58,43,0.1)] backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="container-jr flex h-[76px] items-center justify-between gap-6">
-        <TLink href="/" className="flex shrink-0 items-center gap-3" aria-label="Juliana Rosa, página inicial">
+        <TLink href="/" className="flex min-h-11 min-w-11 shrink-0 items-center gap-3 py-1" aria-label="Juliana Rosa, página inicial">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/brand/jr-marca.png")} alt="" width={598} height={380} className="h-10 w-auto" />
           <span className="hidden leading-none sm:block">
@@ -132,6 +116,7 @@ export function Header() {
             <Button href="/agendar/" size="sm" event="agendar-header">Agendar avaliação</Button>
           </div>
           <button
+            ref={menuBtn}
             type="button"
             className="grid h-12 w-12 place-items-center rounded-full border border-forest/30 xl:hidden"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -143,31 +128,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Menu do celular em tela cheia */}
-      <div
-        ref={menu}
-        className={`fixed inset-x-0 bottom-0 top-[76px] overflow-y-auto bg-cream px-[var(--gutter)] pb-10 pt-6 transition-[opacity,visibility] duration-500 xl:hidden ${open ? "visible opacity-100" : "invisible opacity-0"}`}
-      >
-        <ul className="grid gap-1">
-          {[
-            ["/tricologia/", "Queda de cabelo"],
-            ["/sobrancelhas/micropigmentacao-fio-a-fio/", "Micropigmentação"],
-            ...OTHER.map((o) => [o.href, o.label]),
-            ["/resultados/", "Resultados"],
-            ["/sobre/", "Sobre"],
-            ["/contato/", "Contato"],
-          ].map(([h, l], i) => (
-            <li key={h} data-stagger>
-              <TLink href={h} className={`block border-b border-forest/15 py-3 t-h2 !text-[${i < 2 ? 40 : 28}px] text-forest`}>
-                {l}
-              </TLink>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8" data-stagger>
-          <Button href="/agendar/" event="agendar-menu">Agendar avaliação</Button>
-        </div>
-      </div>
+      <MobileMenu open={open} onClose={() => setOpen(false)} returnFocus={menuBtn} />
     </header>
   );
 }
