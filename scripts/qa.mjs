@@ -41,6 +41,15 @@ const checks = () => {
     const r = el.getBoundingClientRect();
     if (r.width > 0 && r.right > de.clientWidth + 2 && !el.closest("[aria-hidden='true'],.sr-only,svg,.cursor-ring,.curtain,.intro")) clipped.push("fora da tela: " + el.textContent.trim().slice(0, 40));
   }
+  // texto que vaza para fora do cartão/caixa que o contém
+  for (const box of document.querySelectorAll(".card, article, li, figure")) {
+    const br = box.getBoundingClientRect();
+    if (br.width < 80) continue;
+    for (const t of box.querySelectorAll("h1,h2,h3,h4,p,span,a")) {
+      const r = t.getBoundingClientRect();
+      if (r.width && r.right > br.right + 2 && !t.closest(".marquee,[aria-hidden='true'],.sr-only")) clipped.push("vaza do cartão: " + t.textContent.trim().slice(0, 40));
+    }
+  }
   return { badFonts: [...bad.keys()], hscroll, clipped: [...new Set(clipped)].slice(0, 8) };
 };
 

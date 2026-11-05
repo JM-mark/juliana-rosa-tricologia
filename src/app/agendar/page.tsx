@@ -39,7 +39,7 @@ export default function Page() {
           {CATS.map((c, i) => (
             <article key={c.id} className={`rv card flex flex-col p-7 ${c.featured ? "lg:col-span-1 md:col-span-1 !bg-forest !text-cream border-forest" : ""}`} data-d={(i % 3) * 70}>
               <p className={`t-label ${c.featured ? "text-coral" : "accent-text"}`}>{c.featured ? "Destaque" : "Serviço"}</p>
-              <h2 className="t-h3 mt-3">{c.name}</h2>
+              <h2 className="t-h3 mt-3 [overflow-wrap:break-word]" style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}>{c.name}</h2>
               <p className={`t-body mt-3 flex-1 ${c.featured ? "text-cream/85" : "text-forest/85"}`}>{c.text}</p>
               <div className={`mt-6 flex flex-wrap items-center gap-4 ${c.featured ? "on-dark" : ""}`}>
                 <Button href={livebaseUrl(c.id)} size="sm" event={`agendar-${c.id}`}>Ver horários</Button>
