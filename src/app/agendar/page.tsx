@@ -28,8 +28,9 @@ export default function Page() {
   return (
     <>
       <PageHero
+        image="sala"
         eyebrow="Agendamento"
-        title="Escolha o que você quer agendar."
+        title={<>Escolha o que você quer <em>agendar</em>.</>}
         lead="Você escolhe o serviço, vê os horários e os valores direto na agenda da Juliana. Se preferir, chame no WhatsApp."
         crumbs={[{ name: "Início", path: "/" }, { name: "Agendar", path: "/agendar/" }]}
       />

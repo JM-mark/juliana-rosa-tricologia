@@ -18,7 +18,7 @@ export const metadata = pageMeta({
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Contato" title="Fale com a Juliana." lead="Chame no WhatsApp, passe aqui ou deixe sua mensagem. A resposta chega pela conversa no WhatsApp." crumbs={[{ name: "Início", path: "/" }, { name: "Contato", path: "/contato/" }]} />
+      <PageHero image="clinica-clara" eyebrow="Contato" title={<>Fale com a <em>Juliana</em>.</>} lead="Chame no WhatsApp, passe aqui ou deixe sua mensagem. A resposta chega pela conversa no WhatsApp." crumbs={[{ name: "Início", path: "/" }, { name: "Contato", path: "/contato/" }]} />
       <Section tone="cream" className="!pt-0">
         <div className="grid-12 gap-y-12">
           <div className="col-span-12 lg:col-span-5">

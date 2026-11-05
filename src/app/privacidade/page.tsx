@@ -23,7 +23,7 @@ const BLOCKS: [string, string][] = [
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Privacidade" title="Política de privacidade." lead="Texto simples, em linha com a LGPD." crumbs={[{ name: "Início", path: "/" }, { name: "Privacidade", path: "/privacidade/" }]} />
+      <PageHero eyebrow="Privacidade" title={<>Política de <em>privacidade</em>.</>} lead="Texto simples, em linha com a LGPD." crumbs={[{ name: "Início", path: "/" }, { name: "Privacidade", path: "/privacidade/" }]} />
       <Section tone="cream" className="!pt-0">
         <div className="prose-jr max-w-3xl">
           {BLOCKS.map(([t, d]) => (

@@ -17,8 +17,9 @@ export default function Page() {
   return (
     <>
       <PageHero
+        image="folhas"
         eyebrow="Resultados"
-        title="Resultados reais, publicados pela Juliana."
+        title={<>Resultados <em>reais</em>, publicados pela Juliana.</>}
         lead="Resultado real. Os resultados variam de pessoa para pessoa."
         crumbs={[{ name: "Início", path: "/" }, { name: "Resultados", path: "/resultados/" }]}
       />

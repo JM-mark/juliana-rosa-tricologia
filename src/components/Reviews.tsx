@@ -33,7 +33,7 @@ export function Reviews() {
   return (
     <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}>
       <div className="flex min-h-[260px] flex-col justify-between" aria-live="polite">
-        <blockquote key={i} className="t-h2 rv is-in !text-[clamp(26px,3.3vw,46px)]" style={{ transition: "none" }}>
+        <blockquote key={i} className="t-h2 rv is-in !text-[clamp(34px,3.8vw,52px)]" style={{ transition: "none" }}>
           <span aria-hidden="true" className="accent mr-1 select-none">“</span>
           {r.text}
           <span aria-hidden="true" className="accent ml-1 select-none">”</span>

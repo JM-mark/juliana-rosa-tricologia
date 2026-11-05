@@ -28,8 +28,9 @@ export default function Page() {
     <>
       <JsonLd data={faqLd(FAQS)} />
       <PageHero
+        image="cabelo-macro"
         eyebrow="Método Fio Real"
-        title="Primeiro, a verdade do seu caso."
+        title={<>Primeiro, <em>a verdade</em> do seu caso.</>}
         lead="Antes de qualquer procedimento, olhamos de perto, ouvimos você e só então indicamos. É assim que cuidamos de queda de cabelo e de sobrancelha."
         crumbs={[{ name: "Início", path: "/" }, { name: "Método Fio Real", path: "/metodo-fio-real/" }]}
       >

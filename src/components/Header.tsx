@@ -71,12 +71,10 @@ export function Header() {
   }, [sub]);
 
   const active = (p: string) => pathname.startsWith(p);
-  const pill = (p: string) =>
-    `inline-flex h-11 items-center whitespace-nowrap rounded-full px-4 xl:px-5 text-[14px] font-medium tracking-[0.03em] transition-colors duration-200 ${
-      active(p) ? "bg-forest text-cream" : "bg-sage text-forest hover:bg-forest hover:text-cream"
-    }`;
   const plain = (p: string) =>
-    `nav-link inline-flex h-11 items-center whitespace-nowrap px-2 xl:px-3 text-[14px] font-medium tracking-[0.03em] ${active(p) ? "underline underline-offset-8 decoration-coral" : ""}`;
+    `nav-link inline-flex h-11 items-center gap-2 whitespace-nowrap px-2 text-[11px] font-medium uppercase tracking-[0.16em] ${active(p) ? "text-coral-text" : ""}`;
+  const pill = plain;
+  const dot = <span aria-hidden="true" className="inline-block h-1.5 w-1.5 rounded-full bg-coral" />;
 
   return (
     <header
@@ -85,18 +83,18 @@ export function Header() {
       }`}
     >
       <div className="container-jr flex h-[76px] items-center justify-between gap-6">
-        <TLink href="/" className="flex items-center gap-3" aria-label="Juliana Rosa, página inicial">
+        <TLink href="/" className="flex shrink-0 items-center gap-3" aria-label="Juliana Rosa, página inicial">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={asset("/brand/jr-marca.png")} alt="" width={598} height={380} className="h-10 w-auto" />
           <span className="hidden leading-none sm:block">
-            <span className="block font-display text-[22px] font-light tracking-[-0.01em] text-forest" style={{ fontVariationSettings: '"SOFT" 100' }}>Juliana Rosa</span>
-            <span className="t-label mt-1 block text-[10px] tracking-[0.16em] text-forest/70">Tricologia e Sobrancelha</span>
+            <span className="t-h4 block whitespace-nowrap !text-[22px] text-forest">Juliana Rosa</span>
+            <span className="t-label mt-1 hidden whitespace-nowrap text-[9.5px] 2xl:block tracking-[0.2em] text-forest/70">Tricologia e Sobrancelha</span>
           </span>
         </TLink>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 xl:flex">
-          <TLink href="/tricologia/" className={pill("/tricologia")}>Queda de cabelo</TLink>
-          <TLink href="/sobrancelhas/micropigmentacao-fio-a-fio/" className={`${pill("/sobrancelhas/micropigmentacao")} mr-2`}>Micropigmentação</TLink>
+          <TLink href="/tricologia/" className={pill("/tricologia")}>{dot}Queda de cabelo</TLink>
+          <TLink href="/sobrancelhas/micropigmentacao-fio-a-fio/" className={pill("/sobrancelhas/micropigmentacao")}>{dot}Micropigmentação</TLink>
           <div ref={subRef} className="relative">
             <button
               type="button"
@@ -160,7 +158,7 @@ export function Header() {
             ["/contato/", "Contato"],
           ].map(([h, l], i) => (
             <li key={h} data-stagger>
-              <TLink href={h} className={`block border-b border-forest/15 py-3 font-display font-light tracking-[-0.02em] ${i < 2 ? "text-[34px] text-forest" : "text-[26px] text-forest/85"}`} style={{ fontVariationSettings: '"SOFT" 100' }}>
+              <TLink href={h} className={`block border-b border-forest/15 py-3 t-h2 !text-[${i < 2 ? 40 : 28}px] text-forest`}>
                 {l}
               </TLink>
             </li>

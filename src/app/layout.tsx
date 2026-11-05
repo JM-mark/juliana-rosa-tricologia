@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Fraunces } from "next/font/google";
+import { Figtree, Fraunces, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 import { INDEXABLE, SITE, SITE_URL } from "@/config";
 import { asset } from "@/lib/asset";
@@ -7,10 +7,12 @@ import { Shell } from "@/components/Shell";
 
 const display = Fraunces({
   subsets: ["latin"],
-  axes: ["SOFT", "opsz"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "WONK", "opsz"],
   variable: "--ff-display",
   display: "swap",
 });
+const signature = Mrs_Saint_Delafield({ subsets: ["latin"], weight: "400", variable: "--ff-sig", display: "swap" });
 const body = Figtree({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -36,7 +38,7 @@ const bootScript = `(function(){var d=document.documentElement;d.classList.add('
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+    <html lang="pt-BR" className={`${display.variable} ${body.variable} ${signature.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>

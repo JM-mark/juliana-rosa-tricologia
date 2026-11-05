@@ -13,21 +13,22 @@ colors:
   coral-text: "#A8472F"   # texto pequeno sobre claro (5,0:1 sobre creme)
   rose: "#C39C83"         # monograma e filetes
 typography:
-  display: "Fraunces 300, eixo SOFT 100, opsz automático"
+  display: "Fraunces 300 romano, SOFT 0, WONK 0, opsz 144 (títulos grandes); itálico 300 na palavra de destaque"
   body: "Figtree 400 e 500"
-  rule: "Só estas duas famílias, em TODO o site (menu, botões, formulários, placeholders, erros, FAQ, mapa, 404, privacidade). font: inherit em button/input/select/textarea."
+  signature: "Mrs Saint Delafield (rosé #C39C83), só ao lado do retrato, no Sobre e na intro. Nunca sobre foto."
+  rule: "Só estas três famílias. font: inherit em button/input/select/textarea (dentro de @layer base, para as utilidades vencerem)."
 scale:
-  display: "clamp(46px,7.2vw,108px) / 0.98 / -0.03em"
-  h1: "clamp(40px,5.6vw,84px) / 1 / -0.028em"
-  h2: "clamp(32px,4.2vw,60px) / 1.04 / -0.024em"
-  h3: "clamp(26px,2.8vw,38px) / 1.1 / -0.02em"
-  h4: "clamp(21px,1.9vw,26px) / 1.2 / -0.015em"
-  lead: "Figtree 400, clamp(18px,1.5vw,21px) / 1.55"
-  body: "Figtree 400, clamp(16px,1.1vw,17.5px) / 1.65"
-  caption: "Figtree 400, 13px / 1.5"
-  button: "Figtree 500, 13.5px, tracking 0.06em, altura 52px, pílula"
-  label: "Figtree 500, 12px, caixa alta, tracking 0.14em"
-  numbers: "tabular-nums lining-nums (.t-num)"
+  display: "clamp(54px,8.2vw,124px) / 0.95 / -0.02em"
+  h1: "clamp(48px,7.4vw,112px) / 0.97 / -0.02em"
+  h2: "clamp(42px,6vw,96px) / 1 / -0.02em"
+  h3: "clamp(30px,3.4vw,48px) / 1.06"
+  h4: "clamp(22px,2vw,28px) / 1.2"
+  lead: "Figtree 400, clamp(18px,1.5vw,21px) / 1.55, máx. 60ch"
+  body: "Figtree 400, clamp(17px,1.2vw,18px) / 1.6, máx. 60ch"
+  caption: "Figtree 400, 13px"
+  button: "Figtree 500, 12px, caixa alta, tracking 0.16em, altura 52px, pílula"
+  label: "Figtree 500, 11,5px, caixa alta, tracking 0.22em, hairline de 24px antes"
+  rule-italic: "Uma palavra em itálico por título, em coral-text (coral sobre fundo escuro). Sem sublinhados desenhados."
 radius: { card: 24px, photo: 28px, pill: 999px }
 ---
 
@@ -90,3 +91,13 @@ Sistema único (`src/lib/motion.ts` e variáveis CSS):
 - Faça: botões de agendamento sempre para a categoria certa do Livebase; WhatsApp com o nome do serviço na mensagem.
 - Não: fotos de banco de pessoas, promessa de cura ou resultado, "definitiva" para laser, preços no site, nota média ou contagem de avaliações, crédito da agência.
 - Não: segunda fonte, texto do navegador em campos, animação genérica repetida em todas as seções.
+
+# Revisão 1 (tipografia de luxo, hero cinematográfico, Home editorial)
+- **Hero:** 100svh com vídeo próprio (fios desenhados, loop de 10s: `public/video/hero.*`), véu creme para contraste AA, título em 3 linhas com máscara, retrato de 360×480 e assinatura embaixo (fora da foto).
+- **Marquee** dos serviços em Fraunces itálica, separado pelo monograma; pausa no hover.
+- **Vitrine fixa** dos 2 destaques (ScrollTrigger pin): o título sai antes de o próximo entrar, o número rola como odômetro e a imagem entra com máscara arredondada que cresce do centro. No celular (ou com reduced-motion): 2 blocos empilhados.
+- **Lista editorial de serviços** com imagem que segue o mouse (rAF próprio, rotação pela velocidade, nome desliza 12px).
+- **Intro (≤ 1,6s):** monograma e assinatura se revelam por máscara, cortina sobe, título entra linha por linha.
+- **Folhagem ao sol** (Pexels 4826946, tratada) como fundo do Sobre e do CTA final, com véu creme (Sobre) ou forest (CTA).
+- **Fotos de atmosfera** (Pexels, tratadas: piso forest, tom quente, saturação 0,85, grão; duotone em 2) só em heros, hovers e fundos. Nunca como resultado ou cliente. Registro em `docs/fotos-usadas.md`.
+- Removidos: pílulas verdes no header, sublinhados desenhados, cartões com o desenho da sobrancelha ao lado das fotos.

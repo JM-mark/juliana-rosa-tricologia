@@ -20,8 +20,9 @@ export default function Page() {
   return (
     <>
       <PageHero
+        image="escova"
         eyebrow="Sobrancelhas"
-        title="Cada sobrancelha começa pela avaliação."
+        title={<>Cada sobrancelha começa <em>pela avaliação</em>.</>}
         lead="Micropigmentação fio a fio, reconstrução, despigmentação e design. Primeiro entendemos o seu caso, depois indicamos o caminho."
         crumbs={[{ name: "Início", path: "/" }, { name: "Sobrancelhas", path: "/sobrancelhas/" }]}
       >

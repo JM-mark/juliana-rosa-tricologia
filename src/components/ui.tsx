@@ -88,21 +88,15 @@ export function Photo({
 }
 
 /** Sublinhado desenhado à mão (no máximo um por seção). */
+/** Destaque editorial: uma palavra em itálico na cor de acento (sem sublinhado). */
 export function Scribble({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="scribble">
-      {children}
-      <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-        <path pathLength={1} d="M1 6 C 18 1, 32 9, 50 5 S 82 2, 99 6" vectorEffect="non-scaling-stroke" />
-      </svg>
-    </span>
-  );
+  return <em>{children}</em>;
 }
 
 export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <p className={`t-label accent-text inline-flex items-center gap-3 ${className}`}>
-      <span aria-hidden="true" className="inline-block h-px w-6 bg-current" />
+      <span aria-hidden="true" className="inline-block h-px w-6 bg-current opacity-60" />
       {children}
     </p>
   );

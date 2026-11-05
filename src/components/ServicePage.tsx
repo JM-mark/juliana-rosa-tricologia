@@ -4,12 +4,21 @@ import { SERVICES, type Service } from "@/content/services";
 import { breadcrumb, faqLd, serviceLd } from "@/lib/seo";
 import { Button, Container, Eyebrow, Photo, SW } from "@/components/ui";
 import { FAQ, Section, Steps } from "@/components/sections";
-import { ServiceArt } from "@/components/Art";
+import { Atmos, type AtmosName } from "@/components/BgMedia";
 import { FollicleGrow } from "@/components/FollicleGrow";
 import { LensPhoto } from "@/components/LensPhoto";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { JsonLd } from "@/components/JsonLd";
 import { TLink } from "@/components/Nav";
+
+const HERO_IMG: Record<string, AtmosName> = {
+  tricologia: "cabelo-macro",
+  "micropigmentacao-fio-a-fio": "folhas",
+  "reconstrucao-de-fios": "cabelo-dourado",
+  "despigmentacao-a-laser": "equipamento",
+  "design-de-sobrancelha": "escova",
+  "laser-e-estetica": "clinica-clara",
+};
 
 export function BookCta({ s, id }: { s: Service; id: string }) {
   return (
@@ -18,6 +27,14 @@ export function BookCta({ s, id }: { s: Service; id: string }) {
       <Button href={whatsappUrl(s.waName)} variant="secondary" event={`whatsapp-${s.slug}-${id}`}>Falar no WhatsApp</Button>
     </div>
   );
+}
+
+/** Coloca em itálico as últimas palavras do título (uma por título, na cor de acento). */
+function italicLast(t: string) {
+  const m = t.match(/^(.*?)(S+.?)$/);
+  if (!m) return t;
+  const word = m[2].replace(/.$/, "");
+  return (<>{m[1]}<em>{word}</em>{m[2].endsWith(".") ? "." : ""}</>);
 }
 
 /** Template único das páginas de serviço (alimentado por src/content/services.ts). */
@@ -48,7 +65,7 @@ export function ServicePage({ s }: { s: Service }) {
                 ))}
               </nav>
               <Eyebrow>{s.eyebrow}</Eyebrow>
-              <h1 className="t-h1 mt-5">{s.title}</h1>
+              <h1 className="t-h1 mt-5">{italicLast(s.title)}</h1>
               <p className="t-lead rv mt-7 max-w-xl">{s.lead}</p>
               <div className="rv mt-9" data-d={120}><BookCta s={s} id="topo" /></div>
               <ul className="rv mt-10 flex flex-wrap gap-x-7 gap-y-3" data-d={200}>
@@ -58,8 +75,8 @@ export function ServicePage({ s }: { s: Service }) {
               </ul>
             </div>
             <div className="col-span-12 lg:col-span-5">
-              <div className="rv rounded-[var(--radius-photo)] bg-sage p-6 sm:p-8" data-d={100}>
-                <ServiceArt visual={s.visual} className="w-full" />
+              <div className="photo-wrap rv aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]" data-d={100}>
+                <Atmos name={HERO_IMG[s.slug] ?? "folhas"} className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
@@ -96,7 +113,7 @@ export function ServicePage({ s }: { s: Service }) {
           </div>
           <ul className="col-span-12 grid gap-4 lg:col-span-7 lg:col-start-6">
             {s.forWhom.map((f, i) => (
-              <li key={f} className="rv card flex gap-4 p-5" data-d={i * 70}>
+              <li key={f} className="rv flex gap-4 border-t border-forest/20 py-5" data-d={i * 70}>
                 <Check size={20} strokeWidth={SW} className="mt-1 flex-none text-coral-text" aria-hidden="true" />
                 <span className="t-body">{f}</span>
               </li>

@@ -18,7 +18,7 @@ fs.mkdirSync(OUT, { recursive: true });
 const slug = (p) => (p === "/" ? "home" : p.replace(/^\/|\/$/g, "").replace(/\//g, "-"));
 
 const checks = () => {
-  const ok = /^"?(__)?(Fraunces|Figtree)/i;
+  const ok = /^"?(__)?(Fraunces|Figtree|Mrs Saint Delafield)/i;
   const bad = new Map();
   for (const el of document.querySelectorAll("body *")) {
     if (["SCRIPT", "STYLE", "NOSCRIPT", "SVG", "PATH", "CIRCLE", "RECT", "G", "DEFS", "LINEARGRADIENT", "STOP", "CLIPPATH", "TITLE"].includes(el.tagName.toUpperCase())) continue;
