@@ -6,7 +6,7 @@ Licença: [Pexels License](https://www.pexels.com/license/) (uso comercial livre
 |---|---|---|---|
 | 7482357 | fios loiros em macro | https://www.pexels.com/photo/blonde-hair-in-close-up-photography-7482357/ | hero das páginas de tricologia |
 | 7830509 | fios dourados em macro | https://www.pexels.com/photo/7830509/ | hover da lista (Tricologia) |
-| 6948111 | escovas de cabelo sobre lençol | https://www.pexels.com/photo/6948111/ | hover da lista (Design) — a confirmar: aparece um frasco |
+| 9096593 | escova de madeira com flor, sobre bege | https://www.pexels.com/photo/9096593/ | hover da lista (Design), hero de /sobrancelhas |
 | 28410614 | folha grande | https://www.pexels.com/photo/28410614/ | fundo do CTA final |
 | 1302883 | samambaia (duotone) | https://www.pexels.com/photo/1302883/ | seção escura, hover (Reconstrução) |
 | 14255210 | folhas (duotone) | https://www.pexels.com/photo/14255210/ | heros de /resultados e /sobre |
